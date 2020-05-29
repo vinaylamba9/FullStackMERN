@@ -42,8 +42,11 @@ const userSchema = new mongoose.Schema(
   { timestamps: true } // save timestamp on creation in DB
 );
 
-// As, we have ency_password made virtual to call password, we will send password in request on save User. As called password in line 48.
-
+// So this comment is really imp to read.
+// Now, as when we are using virtual, we need to use the virtual key (here is "password") to send the data through request on save.
+// If we send data using encry_password it wont come to virtual and directly store as string in DB, and only when we use password: 1234 like
+// this then, it will come to virtual and store the encry_password as hashed password and also salt (as that is set in virtual only)
+// In DB it will stored as encry_password only, but directly as string | using virtual as hashed
 userSchema
   .virtual("password")
   .set(function (password) {

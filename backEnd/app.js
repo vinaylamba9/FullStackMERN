@@ -9,6 +9,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
 const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/user");
 
 // mongoose connection
 mongoose
@@ -29,8 +30,7 @@ app.use(cors());
 
 // My Routes
 app.use("/api", authRoutes);
-
-// PORT
+app.use("/api", userRoutes);
 app.get("/", (req, res) => res.send("Hi Bro!"));
 
 // Starting a server
