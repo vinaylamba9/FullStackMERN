@@ -9,7 +9,7 @@ router.post(
     check("name", "name should be of at least 3 characters").isLength({
       min: 3,
     }),
-    check("lastname", "name should be of at least 1 character").isLength({
+    check("lastName", "name should be of at least 1 character").isLength({
       min: 1,
     }),
     check("email", "Email is required").isEmail(),

@@ -71,12 +71,12 @@ exports.isSignedIn = expressJwt({
   userProperty: "auth",
 });
 
-// userProperty: 'auth' is set up at req like, it will put a property with name as "auth" and value as _id for that user
+// userProperty: 'auth' is set up at req, like it will put a property with name as "auth" and value as _id for that user
 // Like auth: '45kljsafw4safa7sdafsaf7sadfasfa8f'
 
 // custom middlewares
 exports.isAuthenticated = (req, res, next) => {
-  let checker = req.profile && req.auth && req.profile._id === req.auth._id;
+  let checker = req.profile && req.auth && req.profile._id == req.auth._id;
   if (!checker) {
     res.status(403).json({
       error: "Access Denied!",
